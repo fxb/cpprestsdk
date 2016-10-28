@@ -96,7 +96,7 @@ plaintext_string winrt_encryption::decrypt() const
         reinterpret_cast<const std::wstring::value_type *>(rawPlaintext),
         plaintext->Length / 2));
     SecureZeroMemory(rawPlaintext, plaintext->Length);
-    return std::move(data);
+    return data;
 }
 
 #else
@@ -137,7 +137,7 @@ plaintext_string win32_encryption::decrypt() const
         throw ::utility::details::create_system_error(GetLastError());
     }
     data->resize(m_numCharacters);
-    return std::move(data);
+    return data;
 }
 #endif
 #endif

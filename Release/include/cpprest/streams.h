@@ -675,7 +675,7 @@ namespace Concurrency { namespace streams
             auto copy = std::make_shared<T>();
             return helper()->m_buffer.getn((CharType*)copy.get(), sizeof(T)).then([copy](pplx::task<size_t>) -> T
             {
-                return std::move(*copy);
+                return *copy;
             });
         }
 

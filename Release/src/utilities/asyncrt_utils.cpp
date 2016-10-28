@@ -453,7 +453,7 @@ utf8string __cdecl conversions::latin1_to_utf8(const std::string &s)
 utility::string_t __cdecl conversions::to_string_t(utf16string &&s)
 {
 #ifdef _UTF16_STRINGS
-    return std::move(s);
+    return s;
 #else
     return utf16_to_utf8(std::move(s));
 #endif
@@ -464,7 +464,7 @@ utility::string_t __cdecl conversions::to_string_t(std::string &&s)
 #ifdef _UTF16_STRINGS
     return utf8_to_utf16(std::move(s));
 #else
-    return std::move(s);
+    return s;
 #endif
 }
 
